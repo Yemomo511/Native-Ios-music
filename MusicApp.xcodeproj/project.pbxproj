@@ -16,6 +16,10 @@
 		737827152C3CCC000051CC3B /* MusicAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737827142C3CCC000051CC3B /* MusicAppTests.swift */; };
 		7378271F2C3CCC000051CC3B /* MusicAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7378271E2C3CCC000051CC3B /* MusicAppUITests.swift */; };
 		737827212C3CCC000051CC3B /* MusicAppUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737827202C3CCC000051CC3B /* MusicAppUITestsLaunchTests.swift */; };
+		737827312C3CCC450051CC3B /* song1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7378272E2C3CCC440051CC3B /* song1.mp3 */; };
+		737827322C3CCC450051CC3B /* song2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7378272F2C3CCC450051CC3B /* song2.mp3 */; };
+		737827332C3CCC450051CC3B /* song3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 737827302C3CCC450051CC3B /* song3.mp3 */; };
+		737827362C3CEBC70051CC3B /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737827352C3CEBC70051CC3B /* PlayerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +53,10 @@
 		7378271A2C3CCC000051CC3B /* MusicAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MusicAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7378271E2C3CCC000051CC3B /* MusicAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicAppUITests.swift; sourceTree = "<group>"; };
 		737827202C3CCC000051CC3B /* MusicAppUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicAppUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		7378272E2C3CCC440051CC3B /* song1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = song1.mp3; sourceTree = "<group>"; };
+		7378272F2C3CCC450051CC3B /* song2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = song2.mp3; sourceTree = "<group>"; };
+		737827302C3CCC450051CC3B /* song3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = song3.mp3; sourceTree = "<group>"; };
+		737827352C3CEBC70051CC3B /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +107,11 @@
 		737826FC2C3CCBFE0051CC3B /* MusicApp */ = {
 			isa = PBXGroup;
 			children = (
+				7378272D2C3CCC350051CC3B /* Audio */,
 				737826FD2C3CCBFE0051CC3B /* AppDelegate.swift */,
 				737826FF2C3CCBFE0051CC3B /* SceneDelegate.swift */,
 				737827012C3CCBFE0051CC3B /* ViewController.swift */,
+				737827352C3CEBC70051CC3B /* PlayerViewController.swift */,
 				737827032C3CCBFE0051CC3B /* Main.storyboard */,
 				737827062C3CCC000051CC3B /* Assets.xcassets */,
 				737827082C3CCC000051CC3B /* LaunchScreen.storyboard */,
@@ -125,6 +135,16 @@
 				737827202C3CCC000051CC3B /* MusicAppUITestsLaunchTests.swift */,
 			);
 			path = MusicAppUITests;
+			sourceTree = "<group>";
+		};
+		7378272D2C3CCC350051CC3B /* Audio */ = {
+			isa = PBXGroup;
+			children = (
+				7378272E2C3CCC440051CC3B /* song1.mp3 */,
+				7378272F2C3CCC450051CC3B /* song2.mp3 */,
+				737827302C3CCC450051CC3B /* song3.mp3 */,
+			);
+			path = Audio;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -232,8 +252,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				7378270A2C3CCC000051CC3B /* LaunchScreen.storyboard in Resources */,
+				737827332C3CCC450051CC3B /* song3.mp3 in Resources */,
 				737827072C3CCC000051CC3B /* Assets.xcassets in Resources */,
 				737827052C3CCBFE0051CC3B /* Main.storyboard in Resources */,
+				737827312C3CCC450051CC3B /* song1.mp3 in Resources */,
+				737827322C3CCC450051CC3B /* song2.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +282,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				737827022C3CCBFE0051CC3B /* ViewController.swift in Sources */,
+				737827362C3CEBC70051CC3B /* PlayerViewController.swift in Sources */,
 				737826FE2C3CCBFE0051CC3B /* AppDelegate.swift in Sources */,
 				737827002C3CCBFE0051CC3B /* SceneDelegate.swift in Sources */,
 			);
