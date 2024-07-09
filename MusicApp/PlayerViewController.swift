@@ -8,20 +8,8 @@
 import AVFoundation
 import UIKit
 
-class UtilsCustomView {
-    static func createImageView() -> UIImageView {
-        let imageView = UIImageView()
-        imageView.contentMode = .scaleAspectFill
-        return imageView
-    }
-    
-    static func createLableView() -> UILabel {
-        let label = UILabel()
-        label.numberOfLines = 1
-        label.textAlignment = .center
-        return label
-    }
-}
+// storyBoard 相当于app是一个舞台， 不断的展示 ，切换页面需要移除重新绘制或者直接进行覆盖。
+// JAVAFX 和 大部分原生开发都是这种模式， 建议以后使用 swiftUI 节省时间
 
 class PlayerViewController: UIViewController {
 
@@ -31,9 +19,13 @@ class PlayerViewController: UIViewController {
     private var NameLabel = UtilsCustomView.createLableView()
     private var AuthorLabel = UtilsCustomView.createLableView()
     private var DescriptionLabel = UtilsCustomView.createLableView()
-    
+    private var ButtonLeft = UtilsCustomView.createMusicButton("")
+    private var sliderBar = UISlider()
+    let playerPauseButton = UtilsCustomView.createMusicButton("pause.fill")
+
     public var songs:[Song] = []
     public var position:Int = 0
+    private var songsVolumn:Float = 0.5
     
     
     //把他转为全局属性，因为每个不同的 view 都需要对他进行操作
@@ -69,7 +61,7 @@ class PlayerViewController: UIViewController {
                 print("create player error")
                 return
             }
-            
+            player.volume = songsVolumn
             player.play();
             }catch{
             print("error found ")
@@ -104,9 +96,102 @@ class PlayerViewController: UIViewController {
         
         AuthorLabel.font = UIFont(name: "Helvetica-Bold", size: 20)
         PlayerView.addSubview(AuthorLabel)
+        
+        // Player controls
+        let nextButton = UtilsCustomView.createMusicButton("forward.fill")
+        let backButton = UtilsCustomView.createMusicButton("backward.fill")
+        
+        // Player View
+        let stackView = UIStackView(arrangedSubviews: [backButton, playerPauseButton, nextButton])
+        
+        stackView.frame = CGRect(x: 10,
+                                 y: PlayerView.frame.height - 60,
+                                 width: PlayerView.frame.width - 10,
+                                 height: 50)
+        stackView.distribution = .fillEqually
+        PlayerView.addSubview(stackView)
+        
+        //Action
+        //点击时触发 for: .touchUpInside
+        nextButton.addTarget(self, action: #selector(didForwardPlayer), for: .touchUpInside)
+        playerPauseButton.addTarget(self, action: #selector(didPausePlayer), for: .touchUpInside)
+        backButton.addTarget(self, action: #selector(didbackWardPlayer), for: .touchUpInside)
+        
+        
+        //slider配置
+        sliderBar.frame = CGRect(x: 10,
+                                 y: PlayerView.frame.height - 120,
+                                 width: PlayerView.frame.width - 10,
+                                 height: 50)
+        sliderBar.value = songsVolumn
+        
+        //sliderAction
+        sliderBar.addTarget(self, action: #selector(didSlidePlayer), for: .valueChanged)
+
+        PlayerView.addSubview(sliderBar)
+    }
+    
+    //slider Selector
+    @objc func didSlidePlayer(){
+        let value = sliderBar.value
+        player?.volume = value
+        songsVolumn = value
+    }
+    
+    // Button Selector
+    
+    @objc func didbackWardPlayer(){
+        if position > 0 {
+            position = position - 1
+            player?.stop()
+            //推荐采用 swiftUI 这个最新的或者视图与数据绑定 outlet
+            //移除所有的view
+            for subview in PlayerView.subviews {
+                subview.removeFromSuperview()
+            }
+            //重新配置
+            configure()
+        }else{
+            //弹窗说明
+            let alert = UIAlertController(title: "提示", message: "已经是第一首歌", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "ok", style: .cancel, handler: nil))
+            present(alert, animated: true)
+        }
+    }
+    
+    @objc func didForwardPlayer(){
+        if position < songs.count {
+            position = position + 1
+            player?.stop()
+            //推荐采用 swiftUI 这个最新的或者视图与数据绑定 outlet
+            //移除所有的view
+            for subview in PlayerView.subviews {
+                subview.removeFromSuperview()
+            }
+            //重新配置
+            configure()
+        }else{
+            //弹窗说明
+            let alert = UIAlertController(title: "提示", message: "已经是最后歌", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "ok", style: .cancel, handler: nil))
+            present(alert, animated: true)
+        }
+
+    }
+
+    @objc func didPausePlayer(){
+        if player?.isPlaying == true {
+            player?.pause()
+            playerPauseButton.setBackgroundImage(UIImage(systemName: "play.fill"), for: .normal)
+        }else{
+            player?.play()
+            playerPauseButton.setBackgroundImage(UIImage(systemName: "pause.fill"), for: .normal)
+        }
+
+
+    }
 
     
-    }
     /*
     MARK: - Navigation
      */

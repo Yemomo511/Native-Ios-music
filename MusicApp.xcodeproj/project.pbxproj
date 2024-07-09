@@ -20,6 +20,7 @@
 		737827322C3CCC450051CC3B /* song2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 7378272F2C3CCC450051CC3B /* song2.mp3 */; };
 		737827332C3CCC450051CC3B /* song3.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 737827302C3CCC450051CC3B /* song3.mp3 */; };
 		737827362C3CEBC70051CC3B /* PlayerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737827352C3CEBC70051CC3B /* PlayerViewController.swift */; };
+		7378273A2C3D203E0051CC3B /* UtilsCustomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 737827392C3D203E0051CC3B /* UtilsCustomView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,6 +58,7 @@
 		7378272F2C3CCC450051CC3B /* song2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = song2.mp3; sourceTree = "<group>"; };
 		737827302C3CCC450051CC3B /* song3.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = song3.mp3; sourceTree = "<group>"; };
 		737827352C3CEBC70051CC3B /* PlayerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayerViewController.swift; sourceTree = "<group>"; };
+		737827392C3D203E0051CC3B /* UtilsCustomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilsCustomView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +109,7 @@
 		737826FC2C3CCBFE0051CC3B /* MusicApp */ = {
 			isa = PBXGroup;
 			children = (
+				737827382C3D20240051CC3B /* Utils */,
 				7378272D2C3CCC350051CC3B /* Audio */,
 				737826FD2C3CCBFE0051CC3B /* AppDelegate.swift */,
 				737826FF2C3CCBFE0051CC3B /* SceneDelegate.swift */,
@@ -145,6 +148,14 @@
 				737827302C3CCC450051CC3B /* song3.mp3 */,
 			);
 			path = Audio;
+			sourceTree = "<group>";
+		};
+		737827382C3D20240051CC3B /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				737827392C3D203E0051CC3B /* UtilsCustomView.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -283,6 +294,7 @@
 			files = (
 				737827022C3CCBFE0051CC3B /* ViewController.swift in Sources */,
 				737827362C3CEBC70051CC3B /* PlayerViewController.swift in Sources */,
+				7378273A2C3D203E0051CC3B /* UtilsCustomView.swift in Sources */,
 				737826FE2C3CCBFE0051CC3B /* AppDelegate.swift in Sources */,
 				737827002C3CCBFE0051CC3B /* SceneDelegate.swift in Sources */,
 			);
