@@ -106,7 +106,7 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="Player" destination="dI0-Co-uPf" id="aNC-7M-Yb9"/>
+                        <outlet property="PlayerView" destination="dI0-Co-uPf" id="kPV-Ib-9az"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkM-9q-Mrc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>

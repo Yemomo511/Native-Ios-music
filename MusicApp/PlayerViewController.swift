@@ -18,13 +18,14 @@ class UtilsCustomView {
     static func createLableView() -> UILabel {
         let label = UILabel()
         label.numberOfLines = 1
+        label.textAlignment = .center
         return label
     }
 }
 
 class PlayerViewController: UIViewController {
 
-    @IBOutlet var Player: UIView!
+    @IBOutlet var PlayerView: UIView!
     //内部的常用View, 内部使用， Private
     private var ImageView:UIImageView = UtilsCustomView.createImageView()
     private var NameLabel = UtilsCustomView.createLableView()
@@ -44,7 +45,9 @@ class PlayerViewController: UIViewController {
     //作用:创建播放器视图,DidLayout 是在视图布局完成后调用的方法
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        configure()
+        if PlayerView.subviews.count == 0 {
+            configure()
+        }
     }
     
     func configure(){
@@ -71,6 +74,38 @@ class PlayerViewController: UIViewController {
             }catch{
             print("error found ")
         }
+        print("ok")
+        //图片视图
+        ImageView.frame = CGRect(x: 10,
+                                 y: 10,
+                                 width: PlayerView.frame.width-10,
+                                 height: PlayerView.frame.width-10)
+        ImageView.image = UIImage(named: song.Cover)
+        PlayerView.addSubview(ImageView)
+        //label
+        NameLabel.frame = CGRect(x: 10,
+                                 y: ImageView.frame.height + 10,
+                                 width: PlayerView.frame.width-10,
+                                 height: 40)
+        NameLabel.text = song.name
+        NameLabel.font = UIFont(name: "Helvetica-Bold", size: 30)
+        PlayerView.addSubview(NameLabel)
+        //作者
+        AuthorLabel.frame = CGRect(x: 10,
+                                   y: ImageView.frame.height + 10 + 40,
+                                   width: PlayerView.frame.width - 10,
+                                   height: 40)
+        
+        DescriptionLabel.frame = CGRect(x: 10,
+                                   y: ImageView.frame.height + 10 + 80,
+                                   width: PlayerView.frame.width - 10,
+                                   height: 40)
+        AuthorLabel.text = song.author
+        
+        AuthorLabel.font = UIFont(name: "Helvetica-Bold", size: 20)
+        PlayerView.addSubview(AuthorLabel)
+
+    
     }
     /*
     MARK: - Navigation
