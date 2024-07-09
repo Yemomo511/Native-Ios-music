@@ -52,28 +52,36 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         var cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
         let song = songs[indexPath.row]
         // configure
-//        var content = cell.defaultContentConfiguration()
-//        content.text = song.name
-//        content.image = UIImage(systemName: song.Cover)
-//
-//        cell.contentConfiguration = content
-        
-        cell.textLabel?.text = song.name
-        cell.detailTextLabel?.text = song.description
-        cell.accessoryType = .disclosureIndicator
-        cell.imageView?.image = UIImage(named: song.Cover)
-        cell.textLabel?.font = UIFont(name: "Helvetica-Bold", size: 18)
-        cell.detailTextLabel?.font = UIFont(name: "Helvetica", size: 17)
+        var content = cell.defaultContentConfiguration()
+        content.text = song.name
+        content.secondaryText = song.description
+        //图片
+        content.image = UIImage(named: song.Cover)
+        content.imageProperties.maximumSize = CGSize(width: 60, height: 60)
+        content.textProperties.font = UIFont(name:"Helvetica-Bold", size: 18)!
+        content.secondaryTextProperties.font = UIFont(name: "Helvetica", size: 17)!
+        cell.contentConfiguration = content
+//        已经被废弃，减少使用
+//        cell.textLabel?.text = song.name
+//        cell.detailTextLabel?.text = song.description
+//        cell.accessoryType = .disclosureIndicator
+//        cell.imageView?.image = UIImage(named: song.Cover)
+//        cell.textLabel?.font = UIFont(name: "Helvetica-Bold", size: 18)
+//        cell.detailTextLabel?.font = UIFont(name: "Helvetica", size: 17)
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        //点击后先触发新的 icon 的选中 ，如果设置特定的协议回调函数会触发的
         tableView.deselectRow(at: indexPath, animated: true)
         // 创建视图控制器，准备跳转
         let position = indexPath.row
-        guard var viewController = storyboard?.instantiateViewController(withIdentifier: "player") else {
+        guard var viewController = storyboard?.instantiateViewController(withIdentifier: "player") as? PlayerViewController else {
             return
         }
+        viewController.songs = songs
+        viewController.position = position
+
         present(viewController, animated: true)
     }
 }

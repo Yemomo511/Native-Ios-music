@@ -83,6 +83,36 @@
             </objects>
             <point key="canvasLocation" x="46.564885496183201" y="3.5211267605633805"/>
         </scene>
+        <!--Player View Controller-->
+        <scene sceneID="haJ-Ex-QyM">
+            <objects>
+                <viewController storyboardIdentifier="player" id="w8f-Yd-U8t" customClass="PlayerViewController" customModule="MusicApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="nCx-QN-9Hp">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dI0-Co-uPf" colorLabel="IBBuiltInLabel-Blue">
+                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="Tcg-fT-Gzr"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="Tcg-fT-Gzr" firstAttribute="bottom" secondItem="dI0-Co-uPf" secondAttribute="bottom" id="JL5-en-b51"/>
+                            <constraint firstItem="dI0-Co-uPf" firstAttribute="leading" secondItem="Tcg-fT-Gzr" secondAttribute="leading" id="Rsk-r4-oyj"/>
+                            <constraint firstItem="dI0-Co-uPf" firstAttribute="top" secondItem="Tcg-fT-Gzr" secondAttribute="top" id="ZHP-PD-JRv"/>
+                            <constraint firstItem="Tcg-fT-Gzr" firstAttribute="trailing" secondItem="dI0-Co-uPf" secondAttribute="trailing" id="rTe-cC-pYT"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="Player" destination="dI0-Co-uPf" id="aNC-7M-Yb9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkM-9q-Mrc" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1825" y="4"/>
+        </scene>
     </scenes>
     <resources>
         <systemColor name="systemBackgroundColor">
